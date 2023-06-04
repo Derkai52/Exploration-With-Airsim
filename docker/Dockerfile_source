@@ -1,0 +1,27 @@
+ARG BASE_IMAGE=adamrehn/ue4-engine:4.19.2-cudagl10.0
+FROM $BASE_IMAGE
+
+ENV http_proxy http://172.17.0.1:7890
+ENV https_proxy http://172.17.0.1:7890
+
+USER root
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
+	rsync \
+    sudo \
+    wget \
+    x11-xserver-utils
+
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    adduser ue4 sudo 
+
+USER ue4
+RUN cd /home/ue4 && \
+	git clone --progress https://github.com/Microsoft/AirSim.git && \
+	cd AirSim && \
+	./setup.sh && \
+	./build.sh
+
+ENV http_proxy ""
+ENV https_proxy ""
+
+WORKDIR /home/ue4

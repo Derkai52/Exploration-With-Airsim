@@ -1,0 +1,33 @@
+env:
+  sensor_mode: depth #lidar
+  time_ratio: 1.0
+  fps: 10.0
+  step_mode: synchronous #synchronous
+  action_space_len: 8
+  max_update_per_step: 120
+  train_mode: rescure #reset
+drone:
+  action_mode: velocity #jerk acceleration velocity position
+  jerk_ratio: 1.0
+  acc_ratio: 1.0
+  linear_ratio: 0.8
+  yaw_ratio: 25.0
+  position_ratio: 1.0
+  camera_pram:
+    fx: 120.0  #width/(2*tan(FOV))
+    fy: 120.0  #width/(2*tan(FOV))
+    cx: 120.0  #camera.width/2
+    cy: 80.0  #camera.height/2
+  depth_max: 20.0
+map:
+  #global_map_range: [12,20,4]
+  global_map_range: [14,22,5]
+  #world_orgin: [10.8,11.0,0.75]
+  #world_orgin: [11.8,12.0,1.0]
+  world_orgin: 
+    Drone_2: [10.5, 11.5, 1.0]
+    Drone_1: [2.4, 3.2, 1.0]
+  loacl_map_range: [22.4, 22.4, 3.2] #112*112*16
+  resolution: 0.2
+  free_ratio: 0.8
+  init_map_path:  /home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/globale_map_init #None

@@ -1,0 +1,23 @@
+env:
+  sensor_mode: lidar #depth
+  time_ratio: 1.0
+  fps: 10.0
+  step_mode: asynchronous #synchronous
+drone:
+  action_mode: velocity #jerk acceleration velocity position
+  jerk_ratio: 1.0
+  acc_ratio: 1.0
+  vel_linearly_ratio: 0.3
+  vel_yaw_ratio: 2.0
+  position_ratio: 1.0
+  camera_pram:
+    fx: 160.0
+    fy: 160.0
+    cx: 160.0  #camera.width/2
+    cy: 120.0  #camera.height/2
+  depth_max: 20.0
+map:
+  global_map_range: [48,60,8]
+  world_orgin: [24,25,0.8]
+  loacl_map_range: [12,16,4]
+  resolution: 0.5

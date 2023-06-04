@@ -1,0 +1,11 @@
+<launch>
+<!-- PCL cloud -->
+<node pkg="nodelet" type="nodelet" name="nodelet_pcl_manager" args="manager" />
+<node pkg="nodelet" type="nodelet" name="rgbd_pcl" args="load depth_image_proc/point_cloud_xyz nodelet_pcl_manager">
+   <remap from="camera_info" to="/airsim_node/Drone_1/front_center_custom/camera_info"/>
+   <remap from="image_rect" to="/airsim_node/Drone_1/front_center_custom/DepthPerspective" />
+   <remap from="points" to="/mycamera/depth/rgbd_points"/>
+   <param name="queue_size" value="5" />
+</node>
+</launch>
+

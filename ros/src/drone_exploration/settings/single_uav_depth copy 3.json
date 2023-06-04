@@ -1,0 +1,54 @@
+{
+  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ViewMode": "SpringArmChase",
+  "CameraDefaults": {
+    "CaptureSettings": [
+      {
+        "ImageType": 2,
+        "Width": 32,
+        "Height": 18,
+        "FOV_Degrees": 90,
+        "AutoExposureSpeed": 100,
+        "MotionBlurAmount": 0
+      }
+    ]
+  },
+  "ClockSpeed": 1.0,
+  "Vehicles": {
+    "Drone_1": {
+      "VehicleType": "SimpleFlight",
+      "DefaultVehicleState": "Armed",
+      "EnableCollisionPassthrogh": false,
+      "EnableCollisions": true,
+      "AllowAPIAlways": true,
+      "RC": {
+        "RemoteControlID": 0,
+        "AllowAPIWhenDisconnected": false
+      },
+      "Sensors": {
+        "Imu" : {
+          "SensorType": 2,
+          "Enabled": true
+        }
+      },
+      "Cameras": {
+        "front_center_custom": {
+          "CaptureSettings": [
+            {
+              "ImageType": 2,
+              "Width": 32,
+              "Height": 18,
+              "FOV_Degrees": 90
+            }
+          ],
+          "X": 0.50, "Y": 0, "Z": 0.10,
+          "Pitch": 0, "Roll": 0, "Yaw": 0
+        }
+      },
+      "X": 2, "Y": 0, "Z": 0,
+      "Pitch": 0, "Roll": 0, "Yaw": 0
+    }
+  }
+}

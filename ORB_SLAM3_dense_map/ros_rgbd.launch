@@ -1,0 +1,15 @@
+<launch>
+	<!-- docs: https://wiki.ros.org/nodelet/Tutorials/Running%20a%20nodelet -->
+	<!-- docs: http://wiki.ros.org/depth_image_proc -->
+	<!-- docs: https://wiki.ros.org/openni_launch -->
+	<!-- docs: https://gist.github.com/bhaskara/2400165 -->
+    <arg name="my_args" default="arg1 arg2"/>
+	
+	<!-- Nodelet manager -->
+	<node pkg="ORB_SLAM3" type="RGBD" args="/home/mrmmm/slam_ws/ORB_SLAM/ORB_SLAM3_dense_map/Vocabulary/ORBvoc.txt /home/mrmmm/slam_ws/ORB_SLAM/ORB_SLAM3_dense_map/Examples/RGB-D/TUM1.yaml" name="RGBD" output="screen">
+		<remap from="camera/depth_registered/image_raw" to="/airsim_node/drone_1/front_left_custom/DepthPlanar"/>
+		<!--remap from="depth_registered/points" to="/airsim_node/drone_1/front_left_custom/DepthPlanar/registered/points"/-->
+		<remap from="/camera/rgb/image_raw" to="/airsim_node/drone_1/front_left_custom/Scene"/>
+		<remap from="rgb/camera_info" to="/airsim_node/drone_1/front_left_custom/Scene/camera_info"/>
+	</node>
+</launch>
