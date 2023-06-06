@@ -41,7 +41,7 @@ endif()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
-find_package(OpenCV 4.0)
+find_package(OpenCV 4.2)
 if(NOT OpenCV_FOUND)
   find_package(OpenCV 3.0)
   if(NOT OpenCV_FOUND)
@@ -54,7 +54,7 @@ MESSAGE(${OpenCV_VERSION})
 
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
-find_package(realsense2)
+# find_package(realsense2)
 find_package(PCL 1.12 REQUIRED )
 find_package(octomap REQUIRED )
 find_package(Sophus REQUIRED )
