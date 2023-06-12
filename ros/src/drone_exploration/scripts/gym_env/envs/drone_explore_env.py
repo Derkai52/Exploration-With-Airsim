@@ -25,7 +25,7 @@ class DroneExploreEnv(gym.Env):
         self, 
         drone_name: str = 'Drone_1',
         client_port: float = 41451,
-        config_path: str = '/home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/env_config_simple_resnet.yaml'
+        config_path: str = '/home/${USER}/Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/env_config_simple_resnet.yaml'
         ) -> None:
         super().__init__()
         #ActionSpace Mapping: https://www.zhihu.com/question/37189447/answer/74759345
@@ -83,9 +83,9 @@ class DroneExploreEnv(gym.Env):
         # STEP 4 Gym Var
         self.episodic_length = 0
         if self.action_space_len == 625:
-            self._action_set = np.genfromtxt('/home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/action_space_625.csv', delimiter=",")
+            self._action_set = np.genfromtxt('/home/${USER}/Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/action_space_625.csv', delimiter=",")
         elif self.action_space_len == 8:
-            self._action_set = np.genfromtxt('/home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/action_space_8.csv', delimiter=",")
+            self._action_set = np.genfromtxt('/home/${USER}/Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/action_space_8.csv', delimiter=",")
         self.action_space = spaces.Discrete(len(self._action_set))
         #obs_space: 0-free, 1-unknow, 2-previous_path, 3-occupy
         self.observation_space = spaces.Box(
@@ -110,7 +110,7 @@ class DroneExploreEnv(gym.Env):
                 else:
                     print("超时！！！ 处理时间： ", (cur_time_stamp-self.last_time_stamp)/10**6, 'ms')
                 self.last_time_stamp = cur_time_stamp
-            init_map_path = '/home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/globale_map_init' + self.drone_name +'.npy'
+            init_map_path = '/home/${USER}/Exploration_With_Airsim/ros/src/drone_exploration/scripts/gym_env/configs/globale_map_init' + self.drone_name +'.npy'
             np.save(init_map_path,self.grid_map.global_map)
             self.init_map_path = init_map_path
         else:

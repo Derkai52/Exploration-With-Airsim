@@ -75,9 +75,9 @@ def parse_args():
     parser.add_argument("--target-kl", type=float, default=None,
         help="the target KL divergence threshold")
 
-    parser.add_argument("--savedmodelpath", type=str, default="/media/mrmmm/Data/Graduation_Data/model/ppo_resnet3d/",
+    parser.add_argument("--savedmodelpath", type=str, default="/media/${USER}/Data/Graduation_Data/model/ppo_resnet3d/",
         help="the id of the environment")
-    parser.add_argument("--checkpointpath", type=str, default="/media/mrmmm/Data/Graduation_Data/model/ppo_resnet3d_imitate_learning/100.pth",
+    parser.add_argument("--checkpointpath", type=str, default="/media/${USER}/Data/Graduation_Data/model/ppo_resnet3d_imitate_learning/100.pth",
         help="the id of the environment")
 
     args = parser.parse_args()

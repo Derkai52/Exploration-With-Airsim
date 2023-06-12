@@ -6,7 +6,7 @@
     <arg name="my_args" default="arg1 arg2"/>
 	
 	<!-- Nodelet manager -->
-	<node pkg="ORB_SLAM3" type="RGBD" args="/home/mrmmm/slam_ws/ORB_SLAM/ORB_SLAM3_dense_map/Vocabulary/ORBvoc.txt /home/mrmmm/slam_ws/ORB_SLAM/ORB_SLAM3_dense_map/Examples/RGB-D/TUM1.yaml" name="RGBD" output="screen">
+	<node pkg="ORB_SLAM3" type="RGBD" args="/home/${USER}/slam_ws/ORB_SLAM/ORB_SLAM3_dense_map/Vocabulary/ORBvoc.txt /home/${USER}/slam_ws/ORB_SLAM/ORB_SLAM3_dense_map/Examples/RGB-D/TUM1.yaml" name="RGBD" output="screen">
 		<remap from="camera/depth_registered/image_raw" to="/airsim_node/drone_1/front_left_custom/DepthPlanar"/>
 		<!--remap from="depth_registered/points" to="/airsim_node/drone_1/front_left_custom/DepthPlanar/registered/points"/-->
 		<remap from="/camera/rgb/image_raw" to="/airsim_node/drone_1/front_left_custom/Scene"/>

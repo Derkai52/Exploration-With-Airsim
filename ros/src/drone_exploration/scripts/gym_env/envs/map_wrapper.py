@@ -205,7 +205,7 @@ class GridMap():
         mask2 = np.less(0,pointcloud[2,:])
         mask = np.logical_and(np.logical_and(np.logical_and(mask0,mask1),mask2),mask)
         pointcloud = pointcloud[:,mask]
-        #np.savetxt("/home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/log/map/pointcloud—after_rotate_bisae.txt",pointcloud.T,fmt='%d')
+        #np.savetxt("/home/${USER}/Exploration_With_Airsim/ros/src/drone_exploration/scripts/log/map/pointcloud—after_rotate_bisae.txt",pointcloud.T,fmt='%d')
         #print("pointcloud_after_rotate_biase_mask: ",pointcloud.shape)
 
         #STEP4 更新占用区域，并对于点云进行降采样和去重

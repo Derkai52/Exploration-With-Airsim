@@ -77,7 +77,7 @@ int main(int argc, char **argv)
     SLAM.Shutdown();
 
     // Save camera trajectory
-    SLAM.SaveKeyFrameTrajectoryTUM("/home/mrmmm/DRL_Exploration_With_Airsim/ros/src/drone_exploration/scripts/log/path/KeyFrameTrajectory_06.01.txt");
+    SLAM.SaveKeyFrameTrajectoryTUM("/home/${USER}/Exploration_With_Airsim/ros/src/drone_exploration/scripts/log/path/KeyFrameTrajectory_06.01.txt");
 
     ros::shutdown();
 

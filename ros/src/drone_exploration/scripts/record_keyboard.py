@@ -7,7 +7,7 @@ env2 = DroneExploreEnv(drone_name = 'Drone_2')
 #env1.render("0")
 env2.render("0")
 
-save_path = "/media/mrmmm/Data/Graduation_Data/Teacher_Data/"
+save_path = "/media/${USER}/Data/Graduation_Data/Teacher_Data/"
 start_time1 = time.time()
 actions = []
 rewards = []

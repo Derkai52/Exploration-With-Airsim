@@ -1,6 +1,6 @@
 <launch>
 
-  <env name="ROSCONSOLE_CONFIG_FILE" value="/home/mrmmm/.config/ros.org/rosconsole.config"/>   
+  <env name="ROSCONSOLE_CONFIG_FILE" value="/home/${USER}/.config/ros.org/rosconsole.config"/>   
   <node pkg = "tf2_ros" type = "static_transform_publisher" name = "dlonng_static_test_broadcaster" args = "0 0 0 0 0 0 world_ned map" />
   <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
     <!-- resolution in meters per pixel -->

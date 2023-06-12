@@ -6,7 +6,7 @@ env1 = DroneExploreEnv(drone_name = 'Drone_1')
 env1.render("0")
 
 start_time = time.time()
-save_path = "/media/mrmmm/Data/Graduation_Data/Teacher_Data/"
+save_path = "/media/${USER}/Data/Graduation_Data/Teacher_Data/"
 positions = []
 oritations = []
 positions_path = save_path+'positions_'+str(start_time)+'.npy'
