@@ -1,153 +1,155 @@
-# Welcome to AirSim
+# Exploration_with_airsim
 
-AirSim is a simulator for drones, cars and more, built on [Unreal Engine](https://www.unrealengine.com/) (we now also have an experimental [Unity](https://unity3d.com/) release). It is open-source, cross platform, and supports software-in-the-loop simulation with popular flight controllers such as PX4 & ArduPilot and hardware-in-loop with PX4 for physically and visually realistic simulations. It is developed as an Unreal plugin that can simply be dropped into any Unreal environment. Similarly, we have an experimental release for a Unity plugin.
-
-Our goal is to develop AirSim as a platform for AI research to experiment with deep learning, computer vision and reinforcement learning algorithms for autonomous vehicles. For this purpose, AirSim also exposes APIs to retrieve data and control vehicles in a platform independent way.
-
-**Check out the quick 1.5 minute demo**
-
-Drones in AirSim
-
-[![AirSim Drone Demo Video](docs/images/demo_video.png)](https://youtu.be/-WfTr1-OBGQ)
-
-Cars in AirSim
-
-[![AirSim Car Demo Video](docs/images/car_demo_video.png)](https://youtu.be/gnz1X3UNM5Y)
+![img](./docs/images/result.png)
 
 
-## How to Get It
+本项目在 Ubuntu20.04， ROS-noetic下通过测试:
 
-### Windows
-[![Build Status](https://github.com/microsoft/AirSim/actions/workflows/test_windows.yml/badge.svg)](https://github.com/microsoft/AirSim/actions/workflows/test_windows.yml)
-* [Download binaries](https://github.com/Microsoft/AirSim/releases)
-* [Build it](https://microsoft.github.io/AirSim/build_windows)
+## 一、先决条件
+```shell
+# 下载项目
+cd ~ && git clone https://github.com/Derkai52/Exploration_With_Airsim.git
 
-### Linux
-[![Build Status](https://github.com/microsoft/AirSim/actions/workflows/test_ubuntu.yml/badge.svg)](https://github.com/microsoft/AirSim/actions/workflows/test_ubuntu.yml)
-* [Download binaries](https://github.com/Microsoft/AirSim/releases)
-* [Build it](https://microsoft.github.io/AirSim/build_linux)
+# 安装依赖项
+apt-get install gcc-8 g++-8
 
-### macOS
-[![Build Status](https://github.com/microsoft/AirSim/actions/workflows/test_macos.yml/badge.svg)](https://github.com/microsoft/AirSim/actions/workflows/test_macos.yml)
-* [Build it](https://microsoft.github.io/AirSim/build_linux)
+# 编译 Airsim
+cd Exploration_With_Airsim
+./setup.sh
+./build.sh
 
-For more details, see the [use precompiled binaries](docs/use_precompiled.md) document. 
-
-## How to Use It
-
-### Documentation
-
-View our [detailed documentation](https://microsoft.github.io/AirSim/) on all aspects of AirSim.
-
-### Manual drive
-
-If you have remote control (RC) as shown below, you can manually control the drone in the simulator. For cars, you can use arrow keys to drive manually.
-
-[More details](https://microsoft.github.io/AirSim/remote_control)
-
-![record screenshot](docs/images/AirSimDroneManual.gif)
-
-![record screenshot](docs/images/AirSimCarManual.gif)
-
-
-### Programmatic control
-
-AirSim exposes APIs so you can interact with the vehicle in the simulation programmatically. You can use these APIs to retrieve images, get state, control the vehicle and so on. The APIs are exposed through the RPC, and are accessible via a variety of languages, including C++, Python, C# and Java.
-
-These APIs are also available as part of a separate, independent cross-platform library, so you can deploy them on a companion computer on your vehicle. This way you can write and test your code in the simulator, and later execute it on the real vehicles. Transfer learning and related research is one of our focus areas.
-
-Note that you can use [SimMode setting](https://microsoft.github.io/AirSim/settings#simmode) to specify the default vehicle or the new [ComputerVision mode](https://microsoft.github.io/AirSim/image_apis#computer-vision-mode-1) so you don't get prompted each time you start AirSim.
-
-[More details](https://microsoft.github.io/AirSim/apis)
-
-### Gathering training data
-
-There are two ways you can generate training data from AirSim for deep learning. The easiest way is to simply press the record button in the lower right corner. This will start writing pose and images for each frame. The data logging code is pretty simple and you can modify it to your heart's content.
-
-![record screenshot](docs/images/record_data.png)
-
-A better way to generate training data exactly the way you want is by accessing the APIs. This allows you to be in full control of how, what, where and when you want to log data.
-
-### Computer Vision mode
-
-Yet another way to use AirSim is the so-called "Computer Vision" mode. In this mode, you don't have vehicles or physics. You can use the keyboard to move around the scene, or use APIs to position available cameras in any arbitrary pose, and collect images such as depth, disparity, surface normals or object segmentation.
-
-[More details](https://microsoft.github.io/AirSim/image_apis)
-
-### Weather Effects
-
-Press F10 to see various options available for weather effects. You can also control the weather using [APIs](https://microsoft.github.io/AirSim/apis#weather-apis). Press F1 to see other options available.
-
-![record screenshot](docs/images/weather_menu.png)
-
-## Tutorials
-
-- [Video - Setting up AirSim with Pixhawk Tutorial](https://youtu.be/1oY8Qu5maQQ) by Chris Lovett
-- [Video - Using AirSim with Pixhawk Tutorial](https://youtu.be/HNWdYrtw3f0) by Chris Lovett
-- [Video - Using off-the-self environments with AirSim](https://www.youtube.com/watch?v=y09VbdQWvQY) by Jim Piavis
-- [Webinar - Harnessing high-fidelity simulation for autonomous systems](https://note.microsoft.com/MSR-Webinar-AirSim-Registration-On-Demand.html) by Sai Vemprala
-- [Reinforcement Learning with AirSim](https://microsoft.github.io/AirSim/reinforcement_learning) by Ashish Kapoor
-- [The Autonomous Driving Cookbook](https://aka.ms/AutonomousDrivingCookbook) by Microsoft Deep Learning and Robotics Garage Chapter
-- [Using TensorFlow for simple collision avoidance](https://github.com/simondlevy/AirSimTensorFlow) by Simon Levy and WLU team
-
-## Participate
-
-### Paper
-
-More technical details are available in [AirSim paper (FSR 2017 Conference)](https://arxiv.org/abs/1705.05065). Please cite this as:
+# 构建 ROS 接口
+cd ros
+catkin build -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8
 ```
-@inproceedings{airsim2017fsr,
-  author = {Shital Shah and Debadeepta Dey and Chris Lovett and Ashish Kapoor},
-  title = {AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles},
-  year = {2017},
-  booktitle = {Field and Service Robotics},
-  eprint = {arXiv:1705.05065},
-  url = {https://arxiv.org/abs/1705.05065}
-}
+## 二、ROS 配置
+
+ROS noetic 安装请参考：https://wiki.ros.org/noetic/Installation/Ubuntu
+
+```shell
+# 这里以 noetic 为例，还需要额外安装以下包：
+sudo apt-get install -y python3-catkin-tools ros-noetic-mavros* ros-noetic-tf2-sensor-msgs
+
+# sophus 配置
+sudo apt-get install ros-noetic-sophus
+
+# octomap 配置
+sudo apt-get install ros-noetic-octomap ros-noetic-octomap-mapping ros-noetic-octomap-msgs ros-noetic-octomap-ros ros-noetic-octomap-rviz-plugins ros-noetic-octomap-server
 ```
 
-### Contribute
+## 二、ORB_SLAM_Dense_Map 配置
+### Ponglin
+```shell
+# 安装依赖项
+sudo apt-get install libglew-dev
+sudo apt-get install libpython2.7-dev
+sudo apt-get install libxkbcommon-dev
+sudo apt-get install wayland-protocols
 
-Please take a look at [open issues](https://github.com/microsoft/airsim/issues) if you are looking for areas to contribute to.
+# 编译Ponglin
+git clone https://github.com/stevenlovegrove/Pangolin.git
+cd Pangolin && mkdir build && cd build
 
-* [More on AirSim design](https://microsoft.github.io/AirSim/design)
-* [More on code structure](https://microsoft.github.io/AirSim/code_structure)
-* [Contribution Guidelines](CONTRIBUTING.md)
+cmake ..
 
-### Who is Using AirSim?
+make
 
-We are maintaining a [list](https://microsoft.github.io/AirSim/who_is_using) of a few projects, people and groups that we are aware of. If you would like to be featured in this list please [make a request here](https://github.com/microsoft/airsim/issues).
+sudo make install
+```
+### Eigen3
+```shell
+sudo apt-get install libeigen3-dev
+```
 
-## Contact
+### OpenCV 4.2.0
+```shell
+# 安装依赖项
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 
-Join our [GitHub Discussions group](https://github.com/microsoft/AirSim/discussions) to stay up to date or ask any questions.
+# 下载 opencv 和 opencv_contrib
+git clone -b 4.2.0 https://github.com/opencv/opencv.git
+cd opencv
+git clone -b 4.2.0 https://github.com/opencv/opencv_contrib.git
 
-We also have an AirSim group on [Facebook](https://www.facebook.com/groups/1225832467530667/). 
+# 编译
+cd ../ && mkdir build && cd build
+cmake -D CMAKE_BUILD_TYPE=Release -DOPENCV_GENERATE_PKGCONFIG=ON -D CMAKE_INSTALL_PREFIX=/usr/local -DOPENCV_EXTRA_MODULES_PATH=/home/${USER}/opencv/opencv_contrib/modules /home/${USER}/opencv/ ..
+
+make
+
+sudo make install
+```
+
+### PCL 1.12.0
+```shell
+# 下载 pcl
+git clone -b pcl-1.12.0 https://github.com/PointCloudLibrary/pcl.git
+
+# 编译
+cd pcl && mkdir build && cd build
+
+cmake ..
+
+make 
+
+sudo make install
+```
+### 编译 ORB_SLAM
+```shell
+# 设置环境变量
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/${USER}/Exploration_With_Airsim/ORB_SLAM3_dense_map/Examples/ROS
+
+cd Exploration_With_Airsim/ORB_SLAM3_dense_map
+
+./build_ros.sh
+```
+
+## 三、下载场景包
+```shell
+# 下载和解压
+wget -c https://github.com/microsoft/AirSim/releases/download/v1.7.0-linux/Blocks.zip
+
+unzip Blocks.zip
+
+# 启动场景
+cd Blocks/LinuxNoEditor/
+./Blocks.sh -ResX=1080 -ResY=720 -windowed
+```
 
 
-## What's New
+## 四、Docker 部署
+```shell
+# 进入docker目录并构建镜像
+cd docker 
 
-- [Python wrapper for Open AI gym interfaces.](https://github.com/microsoft/AirSim/pull/3215)
-- [Python wrapper for Event camera simulation](https://github.com/microsoft/AirSim/pull/3202)
-- [Voxel grid construction](https://github.com/microsoft/AirSim/pull/3209)
-- [Programmable camera distortion](https://github.com/microsoft/AirSim/pull/3039)
-- [Wind simulation](https://github.com/microsoft/AirSim/pull/2867)
-- [Azure development environment with documentation](https://github.com/microsoft/AirSim/pull/2816)
-- ROS wrapper for [multirotor](https://github.com/microsoft/AirSim/blob/master/docs/airsim_ros_pkgs.md) and [car](https://github.com/microsoft/AirSim/pull/2743).
+# 构建镜像
+python3 build_airsim_image.py --base_image=nvidia/cudagl:10.0-base-ubuntu18.04 --target_image=airsim_binary:10.0-base-ubuntu18.04
 
-For complete list of changes, view our [Changelog](docs/CHANGELOG.md)
+# 创建容器
+docker run -it --gpus all --net=host --name=airsim --env="DISPLAY=$DISPLAY" -v /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -e SDL_VIDEODRIVER=$SDL_VIDEODRIVER_VALUE -e SDL_HINT_CUDA_DEVICE='0' airsim_binary:10.0-base-ubuntu18.04 /bin/bash
+```
 
-## FAQ
+## 五、使用
+```shell
+cd Exploration_With_Airsim/ORB_SLAM3_dense_map
+source devel/setup.bash
 
-If you run into problems, check the [FAQ](https://microsoft.github.io/AirSim/faq) and feel free to post issues in the  [AirSim](https://github.com/Microsoft/AirSim/issues) repository.
+# 启动 airsim 节点
+roslaunch airsim_ros_pkgs airsim_node.launch
 
-## Code of Conduct
+# 启动 rviz 可视化工具
+roslaunch airsim_ros_pkgs rviz.launch
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+# 启动建图节点
+roslaunch drone_exploration octomap.launch
 
+# 使用按键控制飞行
+python3 Exploration_With_Airsim/ros/src/drone_exploration/scripts/ppo_resnet3d_test_single.py
 
-## License
+# （可选）使用手柄控制
+roslaunch drone_exploration uav_joy.launch
+```
 
-This project is released under the MIT License. Please review the [License file](LICENSE) for more details.
-
-
+## 致谢
+本项目参考 https://github.com/shuaikangma/DRL_Exploration_With_Airsim.git
