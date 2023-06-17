@@ -145,7 +145,7 @@ roslaunch airsim_ros_pkgs rviz.launch
 roslaunch drone_exploration octomap.launch
 
 # 使用按键控制飞行
-python3 Exploration_With_Airsim/ros/src/drone_exploration/scripts/ppo_resnet3d_test_single.py
+python3 Exploration_With_Airsim/ros/src/drone_exploration/scripts/main_keyboard_control.py
 
 # （可选）使用手柄控制
 roslaunch drone_exploration uav_joy.launch
