@@ -3,7 +3,7 @@
 ![img](./docs/images/result.png)
 
 
-本项目在 Ubuntu20.04， ROS-noetic下通过测试:
+本项目在 Ubuntu20.04， ROS-noetic, Airsim 1.7.0-Linux 下通过测试:
 
 ## 一、先决条件
 ```shell
