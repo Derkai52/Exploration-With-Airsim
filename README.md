@@ -1,4 +1,4 @@
-# Exploration_with_airsim
+# Exploration With Airsim
 
 ![img](./docs/images/result.png)
 
